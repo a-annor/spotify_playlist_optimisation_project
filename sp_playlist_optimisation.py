@@ -273,13 +273,13 @@ if __name__=="__main__":
 #spotify:playlist:1Dy3dgDtSDQNjxLk5e9Y2S
 
 #hip hop - james bay test
-#spotify:playlist:256bDWMdloMHhjzpORnjIp
+#spotify:playlist:3JUfwyl1BwxFlFv89xRHv1
 
 #chill pop  
 #spotify:playlist:5DQ3f0k7BHIifAjBVul6n1
 
 #chill
-#spotify:playlist:5HBRMtp0uZqgaoNTIdBdLS
+#spotify:playlist:2ZnO97cxhLLpCLZYdqeusX
 
 #pink 
 #spotify:playlist:2tDK67WWjjc8ilYsNXyz6e
