@@ -90,10 +90,10 @@ def encode_fields(playlist_data):
         'mode'
     ]
     
-    ##Standard Scalar on continuous features 
-    df_cluster = playlist_data[cts_encode_fields]
+    ##Standard Scaler on continuous features 
+    df_cts = playlist_data[cts_encode_fields]
     
-    X_cts = np.array(df_cluster)
+    X_cts = np.array(df_cts)
     scaler = preprocessing.StandardScaler()
     scaler.fit(X_cts)
     X_cts = scaler.transform(X_cts)

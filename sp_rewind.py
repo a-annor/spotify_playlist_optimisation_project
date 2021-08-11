@@ -79,14 +79,14 @@ def rewind_time(my_spotify_history, start_date, end_date):
     spotify_music_period_grp = spotify_music_period_2.groupby(['master_metadata_track_name', 'master_metadata_album_artist_name',
            'master_metadata_album_album_name', 'spotify_track_uri']).size().reset_index(name='counts')
     
-    ##GET TRACK FEATURES
     spotify_music_period_grp = spotify_music_period_grp.sort_values(by='counts',ascending=False)
     
     if len(spotify_music_period_grp) < 20:
         spotify_music_period_top = spotify_music_period_grp.head(len(spotify_music_period_grp))
     else:
         spotify_music_period_top = spotify_music_period_grp.head(20)
-        
+    
+    ##GET TRACK FEATURES
     spotify_music_period_top['track_id'] = spotify_music_period_top['spotify_track_uri'].str[14:]
     
     spotify_music_period_top.columns = ['track_name', 'artist', 'album', 'spotify_track_uri', 'counts', 'track_id']
