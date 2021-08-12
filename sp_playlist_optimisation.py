@@ -121,6 +121,7 @@ def MSclustering(playlist_features, playlist_data):
     
     print("number of estimated clusters : %d" % n_clusters_)
     #Plot result
+    #Note that the plot is for two features alone
     plt.figure(1)
     plt.clf()
     colors = cycle('bgrcmykbgrcmykbgrcmykbgrcmyk')
