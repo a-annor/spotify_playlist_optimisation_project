@@ -105,7 +105,6 @@ def encode_fields(playlist_data):
     return X_full
     
 
-##CLUSTERING
 
 ##MEAN-SHIFT CLUSTERING
 def MSclustering(playlist_features, playlist_data):
