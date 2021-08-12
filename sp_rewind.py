@@ -54,9 +54,6 @@ def clean_spotify_history(spotify_history):
 
     spotify_music_history = spotify_music_history[['ts', 'ms_played', 'master_metadata_track_name', 'master_metadata_album_artist_name',
            'master_metadata_album_album_name', 'spotify_track_uri']]
-    
-    spotify_music_history['track_id'] = spotify_music_history['spotify_track_uri'].str[14:]
-    
 
     return spotify_music_history
 
