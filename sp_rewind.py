@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from itertools import cycle
 from sklearn.cluster import MeanShift, estimate_bandwidth
 
-from sp_sort_ms_clustering_final import encode_fields, MSclustering, playlist_weighting, square_rooted, cosine_similarity, ordered_playlist, generate_new_playlist,create_ordered_playlist
+from sp_playlist_optimisation import encode_fields, MSclustering, playlist_weighting, square_rooted, cosine_similarity, ordered_playlist, generate_new_playlist,create_ordered_playlist
 
 ##SETUP
 cid ='#####'
