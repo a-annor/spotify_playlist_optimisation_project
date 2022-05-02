@@ -7,7 +7,11 @@ Using Spotify’s API, I decided to develop an algorithm to sort tracks in order
 For more information on the proccess please refer to the following article: https://medium.com/@afibannor/spotify-playlist-optimisation-and-discovering-your-music-history-4e2b1fbc5c29
 
 ## Access the Spotify API
-Before we start you first need to access the Spotify API. To do this you start by setting up a Spotify Developer account. Here you can create a project and retrieve the client ID and client secret. You also need to set up a redirect URI to access the API, for this project I set this to http://localhost:8888/callback/.
+Before we start you first need to access the Spotify API. To do this you start by setting up a Spotify Developer account following the link below. 
+
+https://developer.spotify.com/dashboard/
+
+Here you can create a project and retrieve the client ID and client secret. You also need to set up a redirect URI to access the API, for this project I set this to http://localhost:8888/callback/.
 
 ## Locate the Spotify URI
 In Spotify Desktop, search for the playlist you would like to reorder and click the three dots under the playlist name. Click the Ctrl button your keyboard and click share. You can then copy the Spotify URI of the playlist
