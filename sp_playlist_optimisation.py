@@ -19,6 +19,8 @@ cid ='#####'
 secret ='#####'
 
 username = 'annor999' 
+creator = 'annor999'
+
 token = util.prompt_for_user_token(
     username=username,
     scope='playlist-modify-public', 
@@ -266,7 +268,7 @@ def create_ordered_playlist (creator, username, playlist_uri):
 # new_playlist_score = new_playlist_data[1]
 
 if __name__=="__main__":
-    create_ordered_playlist('annor999', 'annor999', 'spotify:playlist:2x9lf6o8ISHYsBQ5lJQm5J')
+    create_ordered_playlist(creator, username, 'spotify:playlist:2x9lf6o8ISHYsBQ5lJQm5J')
  
 
 #hip hop
