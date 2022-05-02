@@ -25,6 +25,7 @@ cid ='#####'
 secret ='#####'
 
 username = 'annor999' 
+
 token = util.prompt_for_user_token(
     username=username,
     scope='playlist-modify-public', 
@@ -112,7 +113,7 @@ def rewind_time(my_spotify_history, start_date, end_date):
     weighted_tracks=playlist_weighting(clustered_tracks)
     final_playlist=ordered_playlist(playlist_period_features,weighted_tracks)[0]
     
-    spotify_new_playlist = sp.user_playlist_create(user = 'annor999', name = start_date +'_' + end_date + '_top_songs_api', public=True, collaborative=False, description='')
+    spotify_new_playlist = sp.user_playlist_create(user = username, name = start_date +'_' + end_date + '_top_songs_api', public=True, collaborative=False, description='')
     return sp.user_playlist_add_tracks(username, spotify_new_playlist['id'], final_playlist['track_id'])
 
 rewind_time(spotify_history,'2019-01-01','2019-06-30')
