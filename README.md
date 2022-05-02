@@ -24,7 +24,7 @@ In Spotify Desktop, search for the playlist you would like to reorder and click 
 First change the creator and username variables to the playlist creator username and your Spotify username respectively. If you are reordering your own playlist, the creator and username will be the same. Lastly in the final function, create_ordered_playlist, update the Spotify URI to the URI of the playlist you would like to reorder. Please note you may be redirected to sign into your Spotify Developer account. You will now be able to run sp_playlist_optimisation.py to optimise the order of any playlist!
 
 ## Access your Spotify History
-To begin your music rewind journey, we first need to access our Spotify data. This can be retrieved in json files by requesting your extended streaming history via Spotify’s Customer Service here.
+To begin your music rewind journey, you first need to access our Spotify data. This can be retrieved in json files by requesting your extended streaming history via Spotify’s Customer Service here.
 
 https://support.spotify.com/us/article/data-rights-and-privacy-settings/
 
