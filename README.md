@@ -31,4 +31,4 @@ https://support.spotify.com/us/article/data-rights-and-privacy-settings/
 You will receive your data in json files, you can store this in a local folder on your computer.
 
 ## Run sp_rewind.py
-To run sp_rewind.py update the username to your Spotify username. Update dir_path to the file path of the folder where your Spotify history data is stored. Then in final function, rewind_time, enter the start and end date of the period you would like to go back to in the following format, yyyy-mm-dd. Please note that you cannnot select a period outside of your listening history i.e. before you began using your Spotify account or after the date you received your data. 
+To run sp_rewind.py update the username to your Spotify username. Update dir_path to the file path of the folder where your Spotify history data is stored. Then in the final function, rewind_time, enter the start and end date of the period you would like to go back to in the following format, yyyy-mm-dd. Please note that you cannnot select a period outside of your listening history i.e. before you began using your Spotify account or after the date you received your data. 
