@@ -30,7 +30,6 @@ token = util.prompt_for_user_token(
 )
 sp = spotipy.Spotify(auth=token)
 
-
 ##GET PLAYLIST
 def get_playlist_data(creator, playlist_uri):
     
@@ -41,7 +40,13 @@ def get_playlist_data(creator, playlist_uri):
     
     #Loop through every track in the playlist, extract features and append the features to the playlist df
     
-    playlist = sp.user_playlist_tracks(creator, playlist_uri)["items"]
+    playlist_call = sp.user_playlist_tracks(creator, playlist_uri, limit=100)
+    playlist=playlist_call["items"]
+    while len(playlist) < playlist_call["total"]:
+        playlist_call = sp.user_playlist_tracks(creator, playlist_uri, limit=100, offset=len(playlist))
+        playlist.extend(playlist_call["items"])
+    
+    
     for track in playlist:
         #Create empty dict
         playlist_features = {}
@@ -171,7 +176,7 @@ def MSclustering(playlist_features, playlist_data):
 
 
 def playlist_weighting(playlist_data_features):
-    playlist_data_features['acousticness'] = playlist_data_features['acousticness']*3.4 
+    playlist_data_features['acousticness'] = playlist_data_features['acousticness']*3.4
     playlist_data_features['energy'] = playlist_data_features['energy']*1.17 
     playlist_data_features['tempo'] = playlist_data_features['tempo']*1.035
     return playlist_data_features
@@ -186,9 +191,6 @@ def cosine_similarity(x,y):
  numerator = sum(a*b for a,b in zip(x,y))
  denominator = square_rooted(x)*square_rooted(y)
  return numerator/float(denominator)
-
-#similarity_check = playlist_data_features
-#print (cosine_similarity(similarity_check.loc[16], similarity_check.loc[18]))
 
 def ordered_playlist(playlist_data, playlist_final_features):
     all_new_playlists_dic = {}
@@ -244,9 +246,24 @@ def generate_new_playlist(username, original_playlist_uri, new_playlist_tracks):
     original_playlist = sp.user_playlist(user=username, playlist_id=original_playlist_uri, fields="name")
     playlist_name = original_playlist["name"]
     timestamp = dt.datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
-    spotity_new_playlist = sp.user_playlist_create(user = username, name = playlist_name + '_api_gen_' + timestamp, public=True, collaborative=False, description='')
+    spotify_new_playlist = sp.user_playlist_create(user = username, name = playlist_name + '_api_gen_' + timestamp, public=True, collaborative=False, description='')
     
-    return sp.user_playlist_add_tracks(username, spotity_new_playlist['id'], new_playlist_tracks['track_id'])
+    if len(new_playlist_tracks) > 100:
+        split_count1=(len(new_playlist_tracks)//100)
+        split_1 = split_count1*100
+        split_track1 = new_playlist_tracks[0:split_1]
+        split_df1 = np.array_split(split_track1, split_count1)
+            
+        for i in range(0,split_count1):
+            sp.user_playlist_add_tracks(username, spotify_new_playlist['id'], split_df1[i]['track_id'])
+           
+        split_2 = len(new_playlist_tracks)%100
+        if split_2 != 0:
+            split_df2 = new_playlist_tracks[split_1:split_1+split_2]
+            sp.user_playlist_add_tracks(username, spotify_new_playlist['id'], split_df2['track_id'])
+
+    else:
+        sp.user_playlist_add_tracks(username, spotify_new_playlist['id'], new_playlist_tracks['track_id'])
 
 
 
@@ -268,7 +285,7 @@ def create_ordered_playlist (creator, username, playlist_uri):
 # new_playlist_score = new_playlist_data[1]
 
 if __name__=="__main__":
-    create_ordered_playlist(creator, username, 'spotify:playlist:2x9lf6o8ISHYsBQ5lJQm5J')
+    create_ordered_playlist('annor999', 'annor999', 'spotify:playlist:2x9lf6o8ISHYsBQ5lJQm5J')
  
 
 #hip hop
